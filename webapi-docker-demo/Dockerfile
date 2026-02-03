@@ -12,9 +12,9 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["webapi-docker-demo/webapi-docker-demo.csproj", "webapi-docker-demo/"]
+COPY ["webapi-docker-demo.csproj", "webapi-docker-demo/"]
 RUN dotnet restore "./webapi-docker-demo/webapi-docker-demo.csproj"
-COPY . .
+COPY . ./webapi-docker-demo
 WORKDIR "/src/webapi-docker-demo"
 RUN dotnet build "./webapi-docker-demo.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
